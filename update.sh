@@ -26,3 +26,5 @@ sed -i 's/bare_metal::Nr/cortex_m::interrupt::Nr/g' ./src/lib.rs
 
 # Sort specified fields alphanumerically for easier consumption in docs.rs
 ./sortFieldsAlphaNum.sh
+
+cat atomic.rs >> src/generic.rs
