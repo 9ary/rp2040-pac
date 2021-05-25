@@ -17,6 +17,7 @@
     <endian>little</endian>
     <mpuPresent>true</mpuPresent>
     <fpuPresent>false</fpuPresent>
+    <vtorPresent>1</vtorPresent>
     <nvicPrioBits>2</nvicPrioBits>
     <vendorSystickConfig>false</vendorSystickConfig>
     <deviceNumInterrupts>26</deviceNumInterrupts>
@@ -1353,7 +1354,8 @@
           </register>
         <register>
           <name>CLK_GPOUT0_SELECTED</name>
-          <description>Indicates which src is currently selected (one-hot)</description>
+          <description>Indicates which SRC is currently selected by the glitchless mux (one-hot).\n
+            This slice does not have a glitchless mux (only the AUX_SRC field is present, not SRC) so this register is hardwired to 0x1.</description>
           <addressOffset>0x0008</addressOffset>
           <access>read-only</access>
           <resetValue>0x00000001</resetValue>
@@ -1472,7 +1474,8 @@
           </register>
         <register>
           <name>CLK_GPOUT1_SELECTED</name>
-          <description>Indicates which src is currently selected (one-hot)</description>
+          <description>Indicates which SRC is currently selected by the glitchless mux (one-hot).\n
+            This slice does not have a glitchless mux (only the AUX_SRC field is present, not SRC) so this register is hardwired to 0x1.</description>
           <addressOffset>0x0014</addressOffset>
           <access>read-only</access>
           <resetValue>0x00000001</resetValue>
@@ -1591,7 +1594,8 @@
           </register>
         <register>
           <name>CLK_GPOUT2_SELECTED</name>
-          <description>Indicates which src is currently selected (one-hot)</description>
+          <description>Indicates which SRC is currently selected by the glitchless mux (one-hot).\n
+            This slice does not have a glitchless mux (only the AUX_SRC field is present, not SRC) so this register is hardwired to 0x1.</description>
           <addressOffset>0x0020</addressOffset>
           <access>read-only</access>
           <resetValue>0x00000001</resetValue>
@@ -1710,7 +1714,8 @@
           </register>
         <register>
           <name>CLK_GPOUT3_SELECTED</name>
-          <description>Indicates which src is currently selected (one-hot)</description>
+          <description>Indicates which SRC is currently selected by the glitchless mux (one-hot).\n
+            This slice does not have a glitchless mux (only the AUX_SRC field is present, not SRC) so this register is hardwired to 0x1.</description>
           <addressOffset>0x002c</addressOffset>
           <access>read-only</access>
           <resetValue>0x00000001</resetValue>
@@ -1779,7 +1784,8 @@
           </register>
         <register>
           <name>CLK_REF_SELECTED</name>
-          <description>Indicates which src is currently selected (one-hot)</description>
+          <description>Indicates which SRC is currently selected by the glitchless mux (one-hot).\n
+            The glitchless multiplexer does not switch instantaneously (to avoid glitches), so software should poll this register to wait for the switch to complete. This register contains one decoded bit for each of the clock sources enumerated in the CTRL SRC field. At most one of these bits will be set at any time, indicating that clock is currently present at the output of the glitchless mux. Whilst switching is in progress, this register may briefly show all-0s.</description>
           <addressOffset>0x0038</addressOffset>
           <access>read-only</access>
           <resetValue>0x00000001</resetValue>
@@ -1862,7 +1868,8 @@
           </register>
         <register>
           <name>CLK_SYS_SELECTED</name>
-          <description>Indicates which src is currently selected (one-hot)</description>
+          <description>Indicates which SRC is currently selected by the glitchless mux (one-hot).\n
+            The glitchless multiplexer does not switch instantaneously (to avoid glitches), so software should poll this register to wait for the switch to complete. This register contains one decoded bit for each of the clock sources enumerated in the CTRL SRC field. At most one of these bits will be set at any time, indicating that clock is currently present at the output of the glitchless mux. Whilst switching is in progress, this register may briefly show all-0s.</description>
           <addressOffset>0x0044</addressOffset>
           <access>read-only</access>
           <resetValue>0x00000001</resetValue>
@@ -1925,7 +1932,8 @@
           </register>
         <register>
           <name>CLK_PERI_SELECTED</name>
-          <description>Indicates which src is currently selected (one-hot)</description>
+          <description>Indicates which SRC is currently selected by the glitchless mux (one-hot).\n
+            This slice does not have a glitchless mux (only the AUX_SRC field is present, not SRC) so this register is hardwired to 0x1.</description>
           <addressOffset>0x0050</addressOffset>
           <access>read-only</access>
           <resetValue>0x00000001</resetValue>
@@ -2012,7 +2020,8 @@
           </register>
         <register>
           <name>CLK_USB_SELECTED</name>
-          <description>Indicates which src is currently selected (one-hot)</description>
+          <description>Indicates which SRC is currently selected by the glitchless mux (one-hot).\n
+            This slice does not have a glitchless mux (only the AUX_SRC field is present, not SRC) so this register is hardwired to 0x1.</description>
           <addressOffset>0x005c</addressOffset>
           <access>read-only</access>
           <resetValue>0x00000001</resetValue>
@@ -2099,7 +2108,8 @@
           </register>
         <register>
           <name>CLK_ADC_SELECTED</name>
-          <description>Indicates which src is currently selected (one-hot)</description>
+          <description>Indicates which SRC is currently selected by the glitchless mux (one-hot).\n
+            This slice does not have a glitchless mux (only the AUX_SRC field is present, not SRC) so this register is hardwired to 0x1.</description>
           <addressOffset>0x0068</addressOffset>
           <access>read-only</access>
           <resetValue>0x00000001</resetValue>
@@ -2192,7 +2202,8 @@
           </register>
         <register>
           <name>CLK_RTC_SELECTED</name>
-          <description>Indicates which src is currently selected (one-hot)</description>
+          <description>Indicates which SRC is currently selected by the glitchless mux (one-hot).\n
+            This slice does not have a glitchless mux (only the AUX_SRC field is present, not SRC) so this register is hardwired to 0x1.</description>
           <addressOffset>0x0074</addressOffset>
           <access>read-only</access>
           <resetValue>0x00000001</resetValue>
@@ -13236,9 +13247,91 @@
         <fields>
             <field>
               <name>PERFSEL0</name>
-            <description>Select a performance event for PERFCTR0</description>
+            <description>Select an event for PERFCTR0. Count either contested accesses, or all accesses, on a downstream port of the main crossbar.</description>
               <bitRange>[4:0]</bitRange>
               <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>apb_contested</name>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>apb</name>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>fastperi_contested</name>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>fastperi</name>
+                  <value>3</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram5_contested</name>
+                  <value>4</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram5</name>
+                  <value>5</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram4_contested</name>
+                  <value>6</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram4</name>
+                  <value>7</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram3_contested</name>
+                  <value>8</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram3</name>
+                  <value>9</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram2_contested</name>
+                  <value>10</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram2</name>
+                  <value>11</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram1_contested</name>
+                  <value>12</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram1</name>
+                  <value>13</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram0_contested</name>
+                  <value>14</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram0</name>
+                  <value>15</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>xip_main_contested</name>
+                  <value>16</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>xip_main</name>
+                  <value>17</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>rom_contested</name>
+                  <value>18</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>rom</name>
+                  <value>19</value>
+                </enumeratedValue>
+              </enumeratedValues>
               </field>
           </fields>
           </register>
@@ -13267,9 +13360,91 @@
         <fields>
             <field>
               <name>PERFSEL1</name>
-            <description>Select a performance event for PERFCTR1</description>
+            <description>Select an event for PERFCTR1. Count either contested accesses, or all accesses, on a downstream port of the main crossbar.</description>
               <bitRange>[4:0]</bitRange>
               <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>apb_contested</name>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>apb</name>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>fastperi_contested</name>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>fastperi</name>
+                  <value>3</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram5_contested</name>
+                  <value>4</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram5</name>
+                  <value>5</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram4_contested</name>
+                  <value>6</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram4</name>
+                  <value>7</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram3_contested</name>
+                  <value>8</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram3</name>
+                  <value>9</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram2_contested</name>
+                  <value>10</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram2</name>
+                  <value>11</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram1_contested</name>
+                  <value>12</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram1</name>
+                  <value>13</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram0_contested</name>
+                  <value>14</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram0</name>
+                  <value>15</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>xip_main_contested</name>
+                  <value>16</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>xip_main</name>
+                  <value>17</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>rom_contested</name>
+                  <value>18</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>rom</name>
+                  <value>19</value>
+                </enumeratedValue>
+              </enumeratedValues>
               </field>
           </fields>
           </register>
@@ -13298,9 +13473,91 @@
         <fields>
             <field>
               <name>PERFSEL2</name>
-            <description>Select a performance event for PERFCTR2</description>
+            <description>Select an event for PERFCTR2. Count either contested accesses, or all accesses, on a downstream port of the main crossbar.</description>
               <bitRange>[4:0]</bitRange>
               <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>apb_contested</name>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>apb</name>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>fastperi_contested</name>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>fastperi</name>
+                  <value>3</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram5_contested</name>
+                  <value>4</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram5</name>
+                  <value>5</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram4_contested</name>
+                  <value>6</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram4</name>
+                  <value>7</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram3_contested</name>
+                  <value>8</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram3</name>
+                  <value>9</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram2_contested</name>
+                  <value>10</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram2</name>
+                  <value>11</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram1_contested</name>
+                  <value>12</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram1</name>
+                  <value>13</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram0_contested</name>
+                  <value>14</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram0</name>
+                  <value>15</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>xip_main_contested</name>
+                  <value>16</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>xip_main</name>
+                  <value>17</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>rom_contested</name>
+                  <value>18</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>rom</name>
+                  <value>19</value>
+                </enumeratedValue>
+              </enumeratedValues>
               </field>
           </fields>
           </register>
@@ -13329,9 +13586,91 @@
         <fields>
             <field>
               <name>PERFSEL3</name>
-            <description>Select a performance event for PERFCTR3</description>
+            <description>Select an event for PERFCTR3. Count either contested accesses, or all accesses, on a downstream port of the main crossbar.</description>
               <bitRange>[4:0]</bitRange>
               <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>apb_contested</name>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>apb</name>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>fastperi_contested</name>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>fastperi</name>
+                  <value>3</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram5_contested</name>
+                  <value>4</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram5</name>
+                  <value>5</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram4_contested</name>
+                  <value>6</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram4</name>
+                  <value>7</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram3_contested</name>
+                  <value>8</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram3</name>
+                  <value>9</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram2_contested</name>
+                  <value>10</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram2</name>
+                  <value>11</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram1_contested</name>
+                  <value>12</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram1</name>
+                  <value>13</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram0_contested</name>
+                  <value>14</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sram0</name>
+                  <value>15</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>xip_main_contested</name>
+                  <value>16</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>xip_main</name>
+                  <value>17</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>rom_contested</name>
+                  <value>18</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>rom</name>
+                  <value>19</value>
+                </enumeratedValue>
+              </enumeratedValues>
               </field>
           </fields>
           </register>
@@ -20407,6 +20746,48 @@
           </fields>
           </register>
         <register>
+          <name>TIMER2</name>
+          <description>Pacing (X/Y) Fractional Timer\n
+            The pacing timer produces TREQ assertions at a rate set by ((X/Y) * sys_clk). This equation is evaluated every sys_clk cycles and therefore can only generate TREQs at a rate of 1 per sys_clk (i.e. permanent TREQ) or less.</description>
+          <addressOffset>0x0428</addressOffset>
+          <resetValue>0x00000000</resetValue>
+        <fields>
+            <field>
+              <name>X</name>
+            <description>Pacing Timer Dividend. Specifies the X value for the (X/Y) fractional timer.</description>
+              <bitRange>[31:16]</bitRange>
+              <access>read-write</access>
+              </field>
+            <field>
+              <name>Y</name>
+            <description>Pacing Timer Divisor. Specifies the Y value for the (X/Y) fractional timer.</description>
+              <bitRange>[15:0]</bitRange>
+              <access>read-write</access>
+              </field>
+          </fields>
+          </register>
+        <register>
+          <name>TIMER3</name>
+          <description>Pacing (X/Y) Fractional Timer\n
+            The pacing timer produces TREQ assertions at a rate set by ((X/Y) * sys_clk). This equation is evaluated every sys_clk cycles and therefore can only generate TREQs at a rate of 1 per sys_clk (i.e. permanent TREQ) or less.</description>
+          <addressOffset>0x042c</addressOffset>
+          <resetValue>0x00000000</resetValue>
+        <fields>
+            <field>
+              <name>X</name>
+            <description>Pacing Timer Dividend. Specifies the X value for the (X/Y) fractional timer.</description>
+              <bitRange>[31:16]</bitRange>
+              <access>read-write</access>
+              </field>
+            <field>
+              <name>Y</name>
+            <description>Pacing Timer Divisor. Specifies the Y value for the (X/Y) fractional timer.</description>
+              <bitRange>[15:0]</bitRange>
+              <access>read-write</access>
+              </field>
+          </fields>
+          </register>
+        <register>
           <name>MULTI_CHAN_TRIGGER</name>
           <description>Trigger one or more channels simultaneously</description>
           <addressOffset>0x0430</addressOffset>
@@ -21686,161 +22067,193 @@
               <name>EP15_OUT</name>
             <bitRange>[31:31]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP15_IN</name>
             <bitRange>[30:30]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP14_OUT</name>
             <bitRange>[29:29]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP14_IN</name>
             <bitRange>[28:28]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP13_OUT</name>
             <bitRange>[27:27]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP13_IN</name>
             <bitRange>[26:26]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP12_OUT</name>
             <bitRange>[25:25]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP12_IN</name>
             <bitRange>[24:24]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP11_OUT</name>
             <bitRange>[23:23]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP11_IN</name>
             <bitRange>[22:22]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP10_OUT</name>
             <bitRange>[21:21]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP10_IN</name>
             <bitRange>[20:20]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP9_OUT</name>
             <bitRange>[19:19]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP9_IN</name>
             <bitRange>[18:18]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP8_OUT</name>
             <bitRange>[17:17]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP8_IN</name>
             <bitRange>[16:16]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP7_OUT</name>
             <bitRange>[15:15]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP7_IN</name>
             <bitRange>[14:14]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP6_OUT</name>
             <bitRange>[13:13]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP6_IN</name>
             <bitRange>[12:12]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP5_OUT</name>
             <bitRange>[11:11]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP5_IN</name>
             <bitRange>[10:10]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP4_OUT</name>
             <bitRange>[9:9]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP4_IN</name>
             <bitRange>[8:8]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP3_OUT</name>
             <bitRange>[7:7]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP3_IN</name>
             <bitRange>[6:6]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP2_OUT</name>
             <bitRange>[5:5]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP2_IN</name>
             <bitRange>[4:4]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP1_OUT</name>
             <bitRange>[3:3]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP1_IN</name>
             <bitRange>[2:2]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP0_OUT</name>
             <bitRange>[1:1]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>EP0_IN</name>
             <bitRange>[0:0]</bitRange>
               <access>read-write</access>
+              <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
           </fields>
           </register>
@@ -23462,21 +23875,21 @@
       <registers>
         <cluster><dim>4</dim><dimIncrement>0x18</dimIncrement><dimIndex>0,1,2,3</dimIndex><name>SM%s</name><description>Cluster SM%s, containing SM*_CLKDIV, SM*_EXECCTRL, SM*_SHIFTCTRL, SM*_ADDR, SM*_INSTR, SM*_PINCTRL</description><addressOffset>0xc8</addressOffset><register>
           <name>SM_CLKDIV</name>
-          <description>Clock divider register for state machine 0\n
+          <description>Clock divisor register for state machine 0\n
             Frequency = clock freq / (CLKDIV_INT + CLKDIV_FRAC / 256)</description>
           <addressOffset>0x0</addressOffset>
           <resetValue>0x00010000</resetValue>
         <fields>
             <field>
               <name>INT</name>
-            <description>Effective frequency is sysclk/int.\n
-                Value of 0 is interpreted as max possible value</description>
+            <description>Effective frequency is sysclk/(int + frac/256).\n
+                Value of 0 is interpreted as 65536. If INT is 0, FRAC must also be 0.</description>
               <bitRange>[31:16]</bitRange>
               <access>read-write</access>
               </field>
             <field>
               <name>FRAC</name>
-            <description>Fractional part of clock divider</description>
+            <description>Fractional part of clock divisor</description>
               <bitRange>[15:8]</bitRange>
               <access>read-write</access>
               </field>
@@ -23490,22 +23903,19 @@
         <fields>
             <field>
               <name>EXEC_STALLED</name>
-            <description>An instruction written to SMx_INSTR is stalled, and latched by the\n
-                state machine. Will clear once the instruction completes.</description>
+            <description>If 1, an instruction written to SMx_INSTR is stalled, and latched by the state machine. Will clear to 0 once this instruction completes.</description>
               <bitRange>[31:31]</bitRange>
               <access>read-only</access>
               </field>
             <field>
               <name>SIDE_EN</name>
-            <description>If 1, the delay MSB is used as side-set enable, rather than a\n
-                side-set data bit. This allows instructions to perform side-set optionally,\n
-                rather than on every instruction.</description>
+            <description>If 1, the MSB of the Delay/Side-set instruction field is used as side-set enable, rather than a side-set data bit. This allows instructions to perform side-set optionally, rather than on every instruction, but the maximum possible side-set width is reduced from 5 to 4. Note that the value of PINCTRL_SIDESET_COUNT is inclusive of this enable bit.</description>
               <bitRange>[30:30]</bitRange>
               <access>read-write</access>
               </field>
             <field>
               <name>SIDE_PINDIR</name>
-            <description>Side-set data is asserted to pin OEs instead of pin values</description>
+            <description>If 1, side-set data is asserted to pin directions, instead of pin values</description>
               <bitRange>[29:29]</bitRange>
               <access>read-write</access>
               </field>
@@ -23599,14 +24009,14 @@
               </field>
             <field>
               <name>PULL_THRESH</name>
-            <description>Number of bits shifted out of TXSR before autopull or conditional pull.\n
+            <description>Number of bits shifted out of OSR before autopull, or conditional pull (PULL IFEMPTY), will take place.\n
                 Write 0 for value of 32.</description>
               <bitRange>[29:25]</bitRange>
               <access>read-write</access>
               </field>
             <field>
               <name>PUSH_THRESH</name>
-            <description>Number of bits shifted into RXSR before autopush or conditional push.\n
+            <description>Number of bits shifted into ISR before autopush, or conditional push (PUSH IFFULL), will take place.\n
                 Write 0 for value of 32.</description>
               <bitRange>[24:20]</bitRange>
               <access>read-write</access>
@@ -23625,13 +24035,13 @@
               </field>
             <field>
               <name>AUTOPULL</name>
-            <description>Pull automatically when the output shift register is emptied</description>
+            <description>Pull automatically when the output shift register is emptied, i.e. on or following an OUT instruction which causes the output shift counter to reach or exceed PULL_THRESH.</description>
               <bitRange>[17:17]</bitRange>
               <access>read-write</access>
               </field>
             <field>
               <name>AUTOPUSH</name>
-            <description>Push automatically when the input shift register is filled</description>
+            <description>Push automatically when the input shift register is filled, i.e. on an IN instruction which causes the input shift counter to reach or exceed PUSH_THRESH.</description>
               <bitRange>[16:16]</bitRange>
               <access>read-write</access>
               </field>
@@ -23652,7 +24062,7 @@
           </register>
         <register>
           <name>SM_INSTR</name>
-          <description>Instruction currently being executed by state machine 0\n
+          <description>Read to see the instruction currently addressed by state machine 0's program counter\n
             Write to execute an instruction immediately (including jumps) and then resume execution.</description>
           <addressOffset>0x10</addressOffset>
           <resetValue>0x00000000</resetValue>
@@ -23672,43 +24082,43 @@
         <fields>
             <field>
               <name>SIDESET_COUNT</name>
-            <description>The number of delay bits co-opted for side-set. Inclusive of the enable bit, if present.</description>
+            <description>The number of MSBs of the Delay/Side-set instruction field which are used for side-set. Inclusive of the enable bit, if present. Minimum of 0 (all delay bits, no side-set) and maximum of 5 (all side-set, no delay).</description>
               <bitRange>[31:29]</bitRange>
               <access>read-write</access>
               </field>
             <field>
               <name>SET_COUNT</name>
-            <description>The number of pins asserted by a SET. Max of 5</description>
+            <description>The number of pins asserted by a SET. In the range 0 to 5 inclusive.</description>
               <bitRange>[28:26]</bitRange>
               <access>read-write</access>
               </field>
             <field>
               <name>OUT_COUNT</name>
-            <description>The number of pins asserted by an OUT. Value of 0 -&gt; 32 pins</description>
+            <description>The number of pins asserted by an OUT PINS, OUT PINDIRS or MOV PINS instruction. In the range 0 to 32 inclusive.</description>
               <bitRange>[25:20]</bitRange>
               <access>read-write</access>
               </field>
             <field>
               <name>IN_BASE</name>
-            <description>The virtual pin corresponding to IN bit 0</description>
+            <description>The pin which is mapped to the least-significant bit of a state machine's IN data bus. Higher-numbered pins are mapped to consecutively more-significant data bits, with a modulo of 32 applied to pin number.</description>
               <bitRange>[19:15]</bitRange>
               <access>read-write</access>
               </field>
             <field>
               <name>SIDESET_BASE</name>
-            <description>The virtual pin corresponding to delay field bit 0</description>
+            <description>The lowest-numbered pin that will be affected by a side-set operation. The MSBs of an instruction's side-set/delay field (up to 5, determined by SIDESET_COUNT) are used for side-set data, with the remaining LSBs used for delay. The least-significant bit of the side-set portion is the bit written to this pin, with more-significant bits written to higher-numbered pins.</description>
               <bitRange>[14:10]</bitRange>
               <access>read-write</access>
               </field>
             <field>
               <name>SET_BASE</name>
-            <description>The virtual pin corresponding to SET bit 0</description>
+            <description>The lowest-numbered pin that will be affected by a SET PINS or SET PINDIRS instruction. The data written to this pin is the least-significant bit of the SET data.</description>
               <bitRange>[9:5]</bitRange>
               <access>read-write</access>
               </field>
             <field>
               <name>OUT_BASE</name>
-            <description>The virtual pin corresponding to OUT bit 0</description>
+            <description>The lowest-numbered pin that will be affected by an OUT PINS, OUT PINDIRS or MOV PINS instruction. The data written to this pin will always be the least-significant bit of the OUT or MOV data.</description>
               <bitRange>[4:0]</bitRange>
               <access>read-write</access>
               </field>
@@ -23926,23 +24336,24 @@
         <fields>
             <field>
               <name>CLKDIV_RESTART</name>
-            <description>Force clock dividers to restart their count and clear fractional\n
-                accumulators. Restart multiple dividers to synchronise them.</description>
+            <description>Restart a state machine's clock divider from an initial phase of 0. Clock dividers are free-running, so once started, their output (including fractional jitter) is completely determined by the integer/fractional divisor configured in SMx_CLKDIV. This means that, if multiple clock dividers with the same divisor are restarted simultaneously, by writing multiple 1 bits to this field, the execution clocks of those state machines will run in precise lockstep.\n\n
+                Note that setting/clearing SM_ENABLE does not stop the clock divider from running, so once multiple state machines' clocks are synchronised, it is safe to disable/reenable a state machine, whilst keeping the clock dividers in sync.\n\n
+                Note also that CLKDIV_RESTART can be written to whilst the state machine is running, and this is useful to resynchronise clock dividers after the divisors (SMx_CLKDIV) have been changed on-the-fly.</description>
               <bitRange>[11:8]</bitRange>
               <access>read-write</access>
               <modifiedWriteValues>clear</modifiedWriteValues>
               </field>
             <field>
               <name>SM_RESTART</name>
-            <description>Clear internal SM state which is otherwise difficult to access\n
-                (e.g. shift counters). Self-clearing.</description>
+            <description>Write 1 to instantly clear internal SM state which may be otherwise difficult to access and will affect future execution.\n\n
+                Specifically, the following are cleared: input and output shift counters; the contents of the input shift register; the delay counter; the waiting-on-IRQ state; any stalled instruction written to SMx_INSTR or run by OUT/MOV EXEC; any pin write left asserted due to OUT_STICKY.</description>
               <bitRange>[7:4]</bitRange>
               <access>read-write</access>
               <modifiedWriteValues>clear</modifiedWriteValues>
               </field>
             <field>
               <name>SM_ENABLE</name>
-            <description>Enable state machine</description>
+            <description>Enable/disable each of the four state machines by writing 1/0 to each of these four bits. When disabled, a state machine will cease executing instructions, except those written directly to SMx_INSTR by the system. Multiple bits can be set/cleared at once to run/halt multiple state machines simultaneously.</description>
               <bitRange>[3:0]</bitRange>
               <access>read-write</access>
               </field>
@@ -23988,28 +24399,28 @@
         <fields>
             <field>
               <name>TXSTALL</name>
-            <description>State machine has stalled on empty TX FIFO. Write 1 to clear.</description>
+            <description>State machine has stalled on empty TX FIFO during a blocking PULL, or an OUT with autopull enabled. Write 1 to clear.</description>
               <bitRange>[27:24]</bitRange>
               <access>read-write</access>
               <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>TXOVER</name>
-            <description>TX FIFO overflow has occurred. Write 1 to clear.</description>
+            <description>TX FIFO overflow (i.e. write-on-full by the system) has occurred. Write 1 to clear. Note that write-on-full does not alter the state or contents of the FIFO in any way, but the data that the system attempted to write is dropped, so if this flag is set, your software has quite likely dropped some data on the floor.</description>
               <bitRange>[19:16]</bitRange>
               <access>read-write</access>
               <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>RXUNDER</name>
-            <description>RX FIFO underflow has occurred. Write 1 to clear.</description>
+            <description>RX FIFO underflow (i.e. read-on-empty by the system) has occurred. Write 1 to clear. Note that read-on-empty does not perturb the state of the FIFO in any way, but the data returned by reading from an empty FIFO is undefined, so this flag generally only becomes set due to some kind of software error.</description>
               <bitRange>[11:8]</bitRange>
               <access>read-write</access>
               <modifiedWriteValues>oneToClear</modifiedWriteValues>
               </field>
             <field>
               <name>RXSTALL</name>
-            <description>State machine has stalled on full RX FIFO. Write 1 to clear.</description>
+            <description>State machine has stalled on full RX FIFO during a blocking PUSH, or an IN with autopush enabled. This flag is also set when a nonblocking PUSH to a full FIFO took place, in which case the state machine has dropped data. Write 1 to clear.</description>
               <bitRange>[3:0]</bitRange>
               <access>read-write</access>
               <modifiedWriteValues>oneToClear</modifiedWriteValues>
@@ -24066,21 +24477,22 @@
           </register>
         <register>
           <dim>4</dim><dimIncrement>0x4</dimIncrement><dimIndex>0,1,2,3</dimIndex><name>TXF%s</name>
-          <description>Direct write access to the TX FIFO for this state machine. Each write pushes one word to the FIFO.</description>
+          <description>Direct write access to the TX FIFO for this state machine. Each write pushes one word to the FIFO. Attempting to write to a full FIFO has no effect on the FIFO state or contents, and sets the sticky FDEBUG_TXOVER error flag for this FIFO.</description>
           <addressOffset>0x0010</addressOffset>
           <access>write-only</access>
           <resetValue>0x00000000</resetValue>
         </register>
         <register>
           <dim>4</dim><dimIncrement>0x4</dimIncrement><dimIndex>0,1,2,3</dimIndex><name>RXF%s</name>
-          <description>Direct read access to the RX FIFO for this state machine. Each read pops one word from the FIFO.</description>
+          <description>Direct read access to the RX FIFO for this state machine. Each read pops one word from the FIFO. Attempting to read from an empty FIFO has no effect on the FIFO state, and sets the sticky FDEBUG_RXUNDER error flag for this FIFO. The data returned to the system on a read from an empty FIFO is undefined.</description>
           <addressOffset>0x0020</addressOffset>
           <access>read-only</access>
           <resetValue>0x00000000</resetValue>
         </register>
         <register>
           <name>IRQ</name>
-          <description>Interrupt request register. Write 1 to clear</description>
+          <description>State machine IRQ flags register. Write 1 to clear. There are 8 state machine IRQ flags, which can be set, cleared, and waited on by the state machines. There's no fixed association between flags and state machines -- any state machine can use any flag.\n\n
+            Any of the 8 flags can be used for timing synchronisation between state machines, using IRQ and WAIT instructions. The lower four of these flags are also routed out to system-level interrupt requests, alongside FIFO status interrupts -- see e.g. IRQ0_INTE.</description>
           <addressOffset>0x0030</addressOffset>
           <resetValue>0x00000000</resetValue>
         <fields>
@@ -24094,10 +24506,7 @@
           </register>
         <register>
           <name>IRQ_FORCE</name>
-          <description>Writing a 1 to each of these bits will forcibly assert the corresponding IRQ.\n
-            Note this is different to the INTF register: writing here affects PIO internal\n
-            state. INTF just asserts the processor-facing IRQ signal for testing ISRs,\n
-            and is not visible to the state machines.</description>
+          <description>Writing a 1 to each of these bits will forcibly assert the corresponding IRQ. Note this is different to the INTF register: writing here affects PIO internal state. INTF just asserts the processor-facing IRQ signal for testing ISRs, and is not visible to the state machines.</description>
           <addressOffset>0x0034</addressOffset>
           <resetValue>0x00000000</resetValue>
         <fields>
@@ -24110,10 +24519,7 @@
           </register>
         <register>
           <name>INPUT_SYNC_BYPASS</name>
-          <description>There is a 2-flipflop synchronizer on each GPIO input, which protects\n
-            PIO logic from metastabilities. This increases input delay, and for fast\n
-            synchronous IO (e.g. SPI) these synchronizers may need to be bypassed.\n
-            Each bit in this register corresponds to one GPIO.\n
+          <description>There is a 2-flipflop synchronizer on each GPIO input, which protects PIO logic from metastabilities. This increases input delay, and for fast synchronous IO (e.g. SPI) these synchronizers may need to be bypassed. Each bit in this register corresponds to one GPIO.\n
             0 -&gt; input is synchronized (default)\n
             1 -&gt; synchronizer is bypassed\n
             If in doubt, leave this register as all zeroes.</description>
